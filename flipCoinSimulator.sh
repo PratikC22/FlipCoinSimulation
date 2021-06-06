@@ -1,14 +1,24 @@
-#! /bin/bash -x
+#!/bin/bash -x
 
-echo "Welcome to flip coin simulator :"
+Heads=0
+Tails=0
+limit=10
+
+while [ $Heads -le $limit ] && [ $Tails -le $limit ]
+do
+        random=$(( RANDOM%2 ))
+
+        if [ $random -eq 0 ]
+        then
+                Heads=$(( $Heads + 1 ))
+
+        else
+                Tails=$(( $Tails + 1 ))
+        fi
+done
+
+echo "Welcome to flip coin simulator"
 sleep 1
 
-
-result=$(( RANDOM%2 ))
-
-if [ $result -eq 1 ]
-then
-	echo "Heads Wins!"
-else
-	echo "Tails Wins!"
-fi
+echo "Number of Heads : " $Heads
+echo "Number of Tails : " $Tails
